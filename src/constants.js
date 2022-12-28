@@ -1,3 +1,4 @@
-const SERVER_ENDPOINT = "http://localhost:5000";
+const SERVER_ENDPOINT = "https://chat-app-backend.adaptable.app/";
+// "http://localhost:5000";
 
-export  { SERVER_ENDPOINT };
+export { SERVER_ENDPOINT };
