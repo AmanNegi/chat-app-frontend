@@ -19,11 +19,12 @@ class Room extends Component {
   };
 
   getMessages = async () => {
+    console.log("Getting Messages");
     var roomName = this.state.roomName;
     const url = `${SERVER_ENDPOINT}/chat/messages/${roomName}`;
     const res = await axios.get(url);
 
-    if (res.statusCode !== 200) {
+    if (res.data.statusCode !== 200) {
       return;
     }
 
@@ -44,6 +45,8 @@ class Room extends Component {
 
   componentDidMount() {
     console.log("Component Mounted", this);
+
+    this.getMessages();
 
     socket = socketIOClient(SERVER_ENDPOINT);
 
@@ -82,8 +85,6 @@ class Room extends Component {
         socket.close();
       }
     });
-
-    this.getMessages();
   }
 
   sendMessage = async (message) => {
